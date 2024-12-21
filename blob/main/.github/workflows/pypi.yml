@@ -1,0 +1,29 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2 # 检出代码仓库
+
+    - name: Set up Python
+      uses: actions/setup-python@v2 # 设置Python环境
+      with:
+        python-version: 3.11 # 选择适合你的Python版本
+
+    - name: Build and upload to PyPI
+      run: |
+        pip install --upgrade setuptools wheel
+        python setup.py sdist bdist_wheel # 构建项目并创建包
+        pip install twine # 安装Twine以便上传到PyPI
+        twine upload dist/* # 使用Twine上传包到PyPI
+      env:
+        TWINE_USERNAME: __token__ # 使用PyPI API令牌，用户名为 "__token__"
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }} # 使用GitHub仓库的密钥存储的PyPI API令牌
