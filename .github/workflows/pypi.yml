@@ -18,6 +18,18 @@ jobs:
       with:
         python-version: 3.11 # 选择适合你的Python版本
 
+    - name: Get the release tag
+      id: get_tag
+      run: |
+        TAG_NAME=${GITHUB_REF##*/} # 提取 tag 名称
+        echo "RELEASE_TAG=$TAG_NAME" >> $GITHUB_ENV
+      # 获取 Git 标签并存储为环境变量 RELEASE_TAG
+
+    - name: Replace THE_VERSION in setup.py with the release tag
+      run: |
+        sed -i "s/THE_VERSION/${{ env.RELEASE_TAG }}/g" setup.py
+        # 使用 tag 名称替换 setup.py 中的 THE_VERSION
+
     - name: Build and upload to PyPI
       run: |
         pip install --upgrade setuptools wheel

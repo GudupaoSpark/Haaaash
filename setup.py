@@ -4,7 +4,7 @@ filepath = 'README.md'
 
 setup(
     name='haaaash',
-    version='0.0.1',
+    version='THE_VERSION',
     author='Gudupao',
     author_email='official@gudupao.top',
     description='hash 批量计算器',
