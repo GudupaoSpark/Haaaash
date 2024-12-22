@@ -36,15 +36,15 @@ jobs:
       #   with:
       #     version: 9
       # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
-    
-      - name: cd docs
-        run: cd docs
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm # 或 pnpm / yarn
+      - name: cd docs
+        run: cd docs
+
       - name: Install dependencies
         run: npm ci # 或 pnpm install / yarn install / bun install
       - name: Build with VitePress
