@@ -3,7 +3,7 @@ from . import outs
 from .hashs import hash
 def main():
     parser = argparse.ArgumentParser(
-                        prog='python3 -m haaaash',
+                        prog='haaaash',
                         description='详细解析：',
                         epilog='By Gudupao (MIT License)')
     parser.add_argument('file',help='文件(夹)路径')
