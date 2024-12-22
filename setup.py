@@ -25,7 +25,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'haaaash=haaaash',
+            'haaaash=haaaash.__main__:main',
         ],
     },
 )
