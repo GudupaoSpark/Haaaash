@@ -11,6 +11,12 @@ def default(hlist: list):
         output += [f"""{i["file"]:<{max_file_length}}{i["hash"]}"""]
     return "\n".join(output)
 
+def md(hlist:list):
+    output = ["|File|Hash|", "|-|-|"]
+    for i in hlist:
+        output += [f"""|{i["file"]}|{i["hash"]}|"""]
+    return "\n".join(output)
+
 def chmod(hlist:list,modname:str="default"):
     mod = eval(modname)
     return mod(hlist)
