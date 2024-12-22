@@ -1,0 +1,11 @@
+/* index.css */
+@import "./var.css";
+@import "./blur.css";
+@import "./blockquote.css";
+@import "./custom-block.css";
+@import "./picture.css";
+
+
+div.VPNavBarTitle a span{
+    color: var(--vp-c-brand-1);
+}

@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "@mdit/plugin-figure": "^0.14.0",
+    "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.10.0",
+    "canvas-confetti": "^1.9.3",
+    "vite-plugin-vitepress-auto-nav": "^3.0.0",
+    "vitepress": "^1.5.0"
+  },
+  "dependencies": {
+    "@theojs/lumen": "^5.0.0"
+  }
+}
