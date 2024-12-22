@@ -29,8 +29,8 @@ features:
     icon: 🚪
     details: 我们开放此项目的一切源码
 
-title: SafeSpeak
-titleTemplate: 端到端的加密聊天工具
+title: Haaaash
+titleTemplate: 支持批量处理的哈希值计算工具
 ---
 
 <Confetti />
