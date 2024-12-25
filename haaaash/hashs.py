@@ -1,8 +1,6 @@
-from .  import enumerate
 from . import hashfunc
 
-def hash(file_path: str, hash_method:str="sha256",length:int=20) -> str:
-    f = enumerate.get_file_or_folder_contents(file_path)
+def hash(f: list[str], hash_method:str="sha256",length:int=20) -> str:
     hlist = []
     if hash_method in ['shake_128','shake_256']:
         for i in f:

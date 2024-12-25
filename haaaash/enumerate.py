@@ -1,6 +1,6 @@
 import os
 
-def get_file_or_folder_contents(path):
+def get_file_or_folder_contents(path,r:bool=False):
     # 判断路径是否存在
     if not os.path.exists(path):
         raise ValueError(f"路径 {path} 不存在")
@@ -14,6 +14,17 @@ def get_file_or_folder_contents(path):
         for root, dirs, files in os.walk(path):
             for file in files:
                 file_paths.append(os.path.join(root, file))
-        return file_paths  # 返回文件路径列表
+        if r:
+            return file_paths[::-1]
+        else:
+            return file_paths
     else:
         raise ValueError(f"路径 {path} 既不是文件也不是文件夹")
+
+# 针对路径列表
+def get_file_or_folder_contents_list(path_list:list,r:bool=False):
+    output = []
+    for i in path_list:
+        output += get_file_or_folder_contents(i,r)
+        
+    return output
