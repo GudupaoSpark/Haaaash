@@ -27,6 +27,6 @@ def md(hlist:list):
     return "\n".join(output)
 
 def chmod(hlist:list,modname:str="default"):
-    
+    if modname not in outfuncs: modname="default"
     mod = outfuncs[modname]
     return mod(hlist)

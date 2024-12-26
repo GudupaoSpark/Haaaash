@@ -1,7 +1,5 @@
 import argparse
-from . import outs
-from .hashs import hash
-from .enumerate import get_file_or_folder_contents_list
+from.shell import shell
 
 
 def main():
@@ -16,16 +14,9 @@ def main():
     parser.add_argument('-f','--outfile',help='输出文件',type=str,default="NO")
     parser.add_argument('-r','--reverse',help='是否反向输出（深层路径在前）',action='store_true')
 
-    args = parser.parse_args()
-    files = get_file_or_folder_contents_list(args.file.split("|"),args.reverse)
-    hash_list = hash(files,args.method,args.length)
-    out = outs.chmod(hash_list,args.outmod)
-    if args.outfile != "NO":
-        with open(args.outfile,'w') as f:
-            f.write(out)
-        print(f"已输出到文件：{args.outfile}")
-    else:
-        print(out)
+    args = parser.parse_args().__dict__
+    shell(args)
+    
 
 if __name__ == '__main__':
     main()
