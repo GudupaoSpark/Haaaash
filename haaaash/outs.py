@@ -1,11 +1,20 @@
+import json
 
 outfuncs = {}
 
 # 注册输出格式
-def register(func:callable):
-    outfuncs[func.__name__] = func
+def register(name=""):
+    if name == "":
+        def func(tf):
+            outfuncs[tf.__name__] = tf
+            return tf
+    else:
+        def func(tf):
+            outfuncs[name] = tf
+            return tf
+    return func
 
-@register
+@register()
 def default(hlist: list):
     # 计算文件路径的最大长度
     max_file_length = max(len(item["file"]) for item in hlist)
@@ -19,12 +28,23 @@ def default(hlist: list):
     return "\n".join(output)
 
 
-@register
+@register()
 def md(hlist:list):
     output = ["|File|Hash|", "|-|-|"]
     for i in hlist:
         output += [f"""|{i["file"]}|{i["hash"]}|"""]
     return "\n".join(output)
+
+@register()
+def csv(hlist:list):
+    output = ["File,Hash"]
+    for i in hlist:
+        output += [f"""{i["file"]},{i["hash"]}"""]
+    return "\n".join(output)
+
+@register("json")
+def thejson(hlist:list):
+    return json.dumps(hlist, indent=4)
 
 def chmod(hlist:list,modname:str="default"):
     if modname not in outfuncs: modname="default"
