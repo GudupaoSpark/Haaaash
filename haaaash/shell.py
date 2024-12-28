@@ -14,7 +14,6 @@ def shell(args):
     hash_list = hash(files,args["method"],args["length"],manager.print)
     manager.print("开始格式化...")
     out = outs.chmod(hash_list,args["outmod"])
-    print(out)
     if args["outfile"] != "NO":
         with open(args["outfile"],'w') as f:
             f.write(out)

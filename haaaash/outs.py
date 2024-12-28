@@ -1,4 +1,6 @@
 import json
+import importlib
+from . import file_mod
 
 outfuncs = {}
 
@@ -47,6 +49,8 @@ def thejson(hlist:list):
     return json.dumps(hlist, indent=4)
 
 def chmod(hlist:list,modname:str="default"):
-    if modname not in outfuncs: modname="default"
-    mod = outfuncs[modname]
+    if modname not in outfuncs: 
+        full = modname.split('|')
+        mod=file_mod.get_function_object(full[0],full[1])
+    else: mod=outfuncs[modname]
     return mod(hlist)

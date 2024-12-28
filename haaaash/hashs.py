@@ -1,12 +1,12 @@
-from . import hashfunc
+from . import hash_func
 from concurrent.futures import ProcessPoolExecutor
 import math
 
 def process_file(file_path, hash_method, length):
     if hash_method in ['shake_128', 'shake_256']:
-        return {"file": file_path, "hash": hashfunc.file_hash_len(file_path, hash_method, length)}
+        return {"file": file_path, "hash": hash_func.file_hash_len(file_path, hash_method, length)}
     else:
-        return {"file": file_path, "hash": hashfunc.file_hash(file_path, hash_method)}
+        return {"file": file_path, "hash": hash_func.file_hash(file_path, hash_method)}
 
 def process_file_batch(file_paths, hash_method, length):
     return [process_file(file_path, hash_method, length) for file_path in file_paths]
