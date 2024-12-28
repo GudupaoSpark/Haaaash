@@ -3,7 +3,7 @@ from.shell import shell
 from . import about
 import haaaash
 gui = None
-if haaaash.__name__ == 'haaaash-expansion':
+if haaaash.the == 'haaaash-expansion':
     from . import gui
 
 def main():
