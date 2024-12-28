@@ -18,12 +18,13 @@ jobs:
       with:
         python-version: 3.11 # 选择适合你的Python版本
 
-    - name: Get the commit hash
-      id: get_hash
+    - name: Get the commit hash and create version
+      id: get_version
       run: |
         COMMIT_HASH=$(git rev-parse --short HEAD)
-        echo "RELEASE_TAG=0.0.dev$COMMIT_HASH" >> $GITHUB_ENV
-      # 获取提交哈希值并存储为环境变量 RELEASE_TAG，添加开发版本前缀
+        COMMIT_COUNT=$(git rev-list --count HEAD)
+        echo "RELEASE_TAG=0.0.0.dev$COMMIT_COUNT+g$COMMIT_HASH" >> $GITHUB_ENV
+      # 创建符合 PEP 440 的开发版本号，格式：0.0.0.devN+gHASH
 
     - name: Replace THE_VERSION in setup.py with the commit hash
       run: |
