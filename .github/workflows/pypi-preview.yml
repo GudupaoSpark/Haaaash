@@ -21,10 +21,9 @@ jobs:
     - name: Get the commit hash and create version
       id: get_version
       run: |
-        COMMIT_HASH=$(git rev-parse --short HEAD)
         COMMIT_COUNT=$(git rev-list --count HEAD)
-        echo "RELEASE_TAG=0.0.0.dev$COMMIT_COUNT+g$COMMIT_HASH" >> $GITHUB_ENV
-      # 创建符合 PEP 440 的开发版本号，格式：0.0.0.devN+gHASH
+        echo "RELEASE_TAG=0.0.0.dev$COMMIT_COUNT" >> $GITHUB_ENV
+      # 创建符合 PEP 440 的开发版本号，格式：0.0.0.devN
 
     - name: Replace THE_VERSION in setup.py with the commit hash
       run: |
