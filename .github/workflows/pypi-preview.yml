@@ -18,12 +18,13 @@ jobs:
       with:
         python-version: 3.11 # 选择适合你的Python版本
 
-    - name: Get the commit hash and create version
+    - name: Get version with timestamp
       id: get_version
       run: |
         COMMIT_COUNT=$(git rev-list --count HEAD)
-        echo "RELEASE_TAG=0.0.0.dev$COMMIT_COUNT" >> $GITHUB_ENV
-      # 创建符合 PEP 440 的开发版本号，格式：0.0.0.devN
+        TIMESTAMP=$(date +%Y%m%d%H%M%S)
+        echo "RELEASE_TAG=0.0.0.dev${COMMIT_COUNT}${TIMESTAMP}" >> $GITHUB_ENV
+      # 创建带时间戳的开发版本号，格式：0.0.0.devN[TIMESTAMP]
 
     - name: Replace THE_VERSION in setup.py with the commit hash
       run: |
