@@ -3,7 +3,7 @@ from.shell import shell
 from . import about
 import haaaash
 gui = None
-if haaaash.the == 'haaaash-expansion':
+if haaaash.the != 'haaaash':
     from . import gui
 
 def main():
@@ -29,7 +29,7 @@ def main():
         
     if args.gui:
         global gui
-        if haaaash.the == 'haaaash-expansion':
+        if haaaash.the != 'haaaash':
             if gui:
                 gui.main()
             else:

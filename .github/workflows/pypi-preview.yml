@@ -23,8 +23,7 @@ jobs:
       run: |
         COMMIT_COUNT=$(git rev-list --count HEAD)
         TIMESTAMP=$(date +%Y%m%d%H%M%S)
-        echo "RELEASE_TAG=0.0.0.dev${COMMIT_COUNT}${TIMESTAMP}" >> $GITHUB_ENV
-      # 创建带时间戳的开发版本号，格式：0.0.0.devN[TIMESTAMP]
+        echo "RELEASE_TAG=0.${COMMIT_COUNT}${TIMESTAMP}" >> $GITHUB_ENV
 
     - name: Replace THE_VERSION in setup.py with the commit hash
       run: |
