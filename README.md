@@ -15,4 +15,4 @@ hash 批量计算器
 通过 `haaaash -h` 查看帮助信息。
 
 或者查看 [![Docs](https://img.shields.io/badge/Docs-blue)
-](https://github.com/GudupaoSpark/Haaaash/Wiki)
+](https://haaaash.gudupao.top)
