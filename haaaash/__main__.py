@@ -2,9 +2,9 @@ import argparse
 from.shell import shell
 from . import about
 import haaaash
-if haaaash.the == 'haaaash-expansion':
+gui = None
+if haaaash.__name__ == 'haaaash-expansion':
     from . import gui
-
 
 def main():
     parser = argparse.ArgumentParser(
@@ -28,20 +28,24 @@ def main():
         return
         
     if args.gui:
+        global gui
         if haaaash.the == 'haaaash-expansion':
-            gui.main()
+            if gui:
+                gui.main()
+            else:
+                print("GUI 模块加载失败")
         elif args.TEST:
-            from . import gui
-            
-            gui.main()
+            try:
+                from . import gui
+                gui.main()
+            except ImportError:
+                print("GUI 模块加载失败")
         else:
             print("请安装 haaaash-expansion 扩展版")
         return
-    
 
     args = args.__dict__
     shell(args)
-    
 
 if __name__ == '__main__':
     main()
