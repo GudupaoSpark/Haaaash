@@ -2,7 +2,7 @@ import argparse
 from.shell import shell
 from . import about
 import haaaash
-if haaaash.__name__ == 'haaaash-expansion':
+if haaaash.the == 'haaaash-expansion':
     from . import gui
 
 
@@ -28,7 +28,7 @@ def main():
         return
         
     if args.gui:
-        if haaaash.__name__ == 'haaaash-expansion':
+        if haaaash.the == 'haaaash-expansion':
             gui.main()
         elif args.TEST:
             from . import gui

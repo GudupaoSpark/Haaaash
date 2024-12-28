@@ -29,7 +29,7 @@ __  /_/ / _  __ `/_  __ `/_  __ `/_  __ `/__  ___/__  __ \
 _  __  /  / /_/ / / /_/ / / /_/ / / /_/ / _(__  ) _  / / /
 /_/ /_/   \__,_/  \__,_/  \__,_/  \__,_/  /____/  /_/ /_/ 
 
-当前版本: {haaaash.__name__} {haaaash.__version__}
+当前版本: {haaaash.the} {haaaash.__version__}
 最新版本: {latest_version}
 
 GitHub: https://github.com/gudupaospark/haaaash

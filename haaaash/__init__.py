@@ -1,4 +1,4 @@
 # Haaaash
 __name__ = "haaaash"
-__is__ = "IS"
+the = "IS"
 __version__ = "THE_VERSION"
