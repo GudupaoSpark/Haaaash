@@ -27,7 +27,7 @@ jobs:
 
     - name: Replace THE_VERSION in setup.py with the release tag
       run: |
-        sed -i "s/THE_VERSION/${{ env.RELEASE_TAG }}/g" setup.py
+        sed -i "s/THE_VERSION/${{ env.RELEASE_TAG }}/g" setup-expansion.py
         sed -i "s/THE_VERSION/${{ env.RELEASE_TAG }}/g" haaaash/__init__.py
         # 使用 tag 名称替换 setup.py 中的 THE_VERSION
 
