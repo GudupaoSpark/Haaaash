@@ -1,6 +1,9 @@
 import argparse
 from.shell import shell
 from . import about
+import haaaash
+if haaaash.__name__ == 'haaaash-expansion':
+    from . import gui
 
 
 def main():
@@ -15,12 +18,26 @@ def main():
     parser.add_argument('-f','--outfile',help='输出文件',type=str,default="NO")
     parser.add_argument('-r','--reverse',help='是否反向输出（深层路径在前）',action='store_true')
     parser.add_argument('-a','--about',help='关于',action='store_true')
+    parser.add_argument('-g','--gui',help='启动图形界面',action='store_true')
+    parser.add_argument('--TEST',help='测试模式，激活高级版',action='store_true')
     
     args = parser.parse_args()
     
     if args.about:
         about.main()
         return
+        
+    if args.gui:
+        if haaaash.__name__ == 'haaaash-expansion':
+            gui.main()
+        elif args.TEST:
+            from . import gui
+            
+            gui.main()
+        else:
+            print("请安装 haaaash-expansion 扩展版")
+        return
+    
 
     args = args.__dict__
     shell(args)

@@ -17,7 +17,7 @@ def shell(args):
     if args["outfile"] != "NO":
         with open(args["outfile"],'w') as f:
             f.write(out)
-        print(f"已输出到文件： {args["outfile"]}")
+        print(f"已输出到文件： {args['outfile']}")
         print(f"耗时：{time.time() - start_time} 秒")
     else:
         manager.clear()
