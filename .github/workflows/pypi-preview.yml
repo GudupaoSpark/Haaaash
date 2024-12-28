@@ -22,8 +22,8 @@ jobs:
       id: get_hash
       run: |
         COMMIT_HASH=$(git rev-parse --short HEAD)
-        echo "RELEASE_TAG=$COMMIT_HASH" >> $GITHUB_ENV
-      # 获取提交哈希值并存储为环境变量 RELEASE_TAG
+        echo "RELEASE_TAG=0.0.dev$COMMIT_HASH" >> $GITHUB_ENV
+      # 获取提交哈希值并存储为环境变量 RELEASE_TAG，添加开发版本前缀
 
     - name: Replace THE_VERSION in setup.py with the commit hash
       run: |
