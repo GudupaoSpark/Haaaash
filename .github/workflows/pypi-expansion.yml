@@ -33,6 +33,7 @@ jobs:
 
     - name: Build and upload to PyPI
       run: |
+        sed -i "s/IS/haaaash-expansion/g" haaaash/__init__.py
         pip install --upgrade setuptools wheel
         python setup-expansion.py sdist bdist_wheel # 构建项目并创建包
         pip install twine # 安装Twine以便上传到PyPI

@@ -33,6 +33,7 @@ jobs:
 
     - name: Build and upload to PyPI
       run: |
+        sed -i "s/IS/haaaash/g" haaaash/__init__.py
         rm -rf haaaash/gui
         pip install --upgrade setuptools wheel
         python setup.py sdist bdist_wheel # 构建项目并创建包
